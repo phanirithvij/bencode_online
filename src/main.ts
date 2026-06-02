@@ -265,8 +265,8 @@ class Session
     try {
       data = JSON.parse(decompressed);
     }
-    catch (exception: any) {
-      if (!(exception instanceof SyntaxError))
+    catch (exception) {
+      if ((exception instanceof Error) && !(exception instanceof SyntaxError))
         alert(exception.message);
       return new Session("");
     }
