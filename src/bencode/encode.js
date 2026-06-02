@@ -105,9 +105,7 @@ encode._map = function (buffers, data) {
   buffers.push(buffD)
 
   // fix for issue #13 - sorted dicts
-  const keys = []
-  for (const iter = data.keys(); val = iter.next().value; )
-    keys.push(val);
+  const keys = [...data.keys()]
   keys.sort(Buffer.compare)
 
   for (const key of keys) {
