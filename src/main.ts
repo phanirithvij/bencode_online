@@ -376,9 +376,10 @@ function main(): void
       }
     });
 
+    const sleep = (time: number) => new Promise((resolve, _reject) => { setTimeout(resolve, time); });
     clipboard.on('success', async (_e) => {
       shareButton.firstChild!.nodeValue = "OK!";
-      const _sleep = await new Promise((resolve, _reject) => { setTimeout(resolve, 1500); });
+      await sleep(1500);
       shareButton.firstChild!.nodeValue = shareButtonText;
     });
   }
