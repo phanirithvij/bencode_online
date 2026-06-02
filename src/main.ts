@@ -61,7 +61,7 @@ function tryDecodeHexstring(str: string): Buffer
 {
   const isHexstring = (str: string): boolean =>
   {
-    const re = /<hex>[0-9a-f ]+<\/hex>/gi;
+    const re = /^\s*<hex>[0-9a-f ]+<\/hex>\s*$/gi;
     return re.test(str);
   };
 
@@ -72,7 +72,7 @@ function tryDecodeHexstring(str: string): Buffer
   };
 
   return isHexstring(str)
-    ? decodeToBuffer(str)
+    ? decodeToBuffer(str.trim())
     : Buffer.from(str);
 }
 
