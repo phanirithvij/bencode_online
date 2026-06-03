@@ -346,11 +346,18 @@ function main(): void
     if (files.length <= 0)
       return;
 
-    // only handle the first file
-    const fileBlob = files[0];
-    const buf = Buffer.from(await loadFile(fileBlob));
-
-    loadData(fileBlob.name, buf);
+    try
+    {
+      const fileBlob = files[0];  // only handle the first file
+      const buf = Buffer.from(await loadFile(fileBlob));
+      loadData(fileBlob.name, buf);
+    }
+    catch (exception)
+    {
+      if (exception instanceof Error)
+        editor.setValue(`loadFile error: ${exception}`);
+      return;
+    }
   };
 
   jsonEditor.addEventListener('dragover', (ev: DragEvent) => { ev.preventDefault(); });
@@ -406,9 +413,10 @@ function main(): void
       const obj2 = decodeToMap(obj);
       data = Bencode.encode(obj2);
     }
-    catch (exception: any)
+    catch (exception)
     {
-      alert(`Save error:\n${exception.message}`);
+      if (exception instanceof Error)
+        alert(`Save error:\n${exception}`);
       return;
     }
 
