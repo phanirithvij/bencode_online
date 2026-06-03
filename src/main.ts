@@ -51,7 +51,7 @@ function tryEncodeHexstring(data: Uint8Array): string
     return str;
   };
 
-  const str = data.toString();
+  const str = Buffer.from(data.buffer, data.byteOffset, data.byteLength).toString();
   return isValidUtf8String(str)
     ? str
     : encodeToHexstring(Buffer.from(data));
