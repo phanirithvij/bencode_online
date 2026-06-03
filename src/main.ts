@@ -24,9 +24,15 @@ function isString(s: any): s is string
 
 function loadFile(blob: Blob): Promise<ArrayBuffer>
 {
-  return new Promise((resolve, _reject) => {
+  return new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onload = () => { resolve(reader.result as ArrayBuffer); };
+    reader.onerror = (_event) => {
+      const readerError = reader.error!;
+      const error = new Error(readerError.message);
+      error.name = readerError.name;
+      reject(error);
+    };
+    reader.onload = (_event) => { resolve(reader.result as ArrayBuffer); };
     reader.readAsArrayBuffer(blob);
   });
 }
