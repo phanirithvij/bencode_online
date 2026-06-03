@@ -337,6 +337,9 @@ function main(): void
   {
     editor.setValue("");
 
+    if (files.length <= 0)
+      return;
+
     // only handle the first file
     const fileBlob = files[0];
     const buf = Buffer.from(await loadFile(fileBlob));
