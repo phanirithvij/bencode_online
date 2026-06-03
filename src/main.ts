@@ -277,7 +277,7 @@ class Session
       return new Session("");
     }
 
-    if (!Object.prototype.hasOwnProperty.call(data, "editorText"))
+    if (!Object.prototype.hasOwnProperty.call(data, "editorText") || (typeof data.editorText !== "string"))
       return new Session("");
 
     return new Session(data.editorText);
