@@ -5,7 +5,7 @@
   "homepage": "https://github.com/Chocobo1/bencode_online",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Chocobo1/bencode_online.git"
+    "url": "git+https://github.com/Chocobo1/bencode_online.git"
   },
   "scripts": {
     "build": "webpack --mode production --config webpack.prod.mjs",
