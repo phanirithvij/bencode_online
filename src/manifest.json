@@ -1,0 +1,9 @@
+{
+  "name": "Bencode Online",
+  "icons": [{
+    "src": "assets/favicon.svg",
+    "sizes": "any"
+  }],
+  "start_url": "./",
+  "display": "standalone"
+}

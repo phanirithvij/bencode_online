@@ -30,9 +30,11 @@ export default
         { from: 'node_modules/ace-builds/src-min-noconflict/worker-json.js', to: 'js' },
         { from: 'src/assets/bootstrap.min.css', to: 'css' },
         { from: 'src/assets/bootstrap.min.js', to: 'js' },
+        { from: 'src/assets/favicon.svg', to: 'assets' },
         { from: 'src/assets/github.svg', to: 'assets' },
         { from: 'src/bbb_sunflower_1080p_60fps_normal.mp4.torrent', to: 'assets' },
         { from: 'src/index.html' },
+        { from: 'src/manifest.json' },
         { from: 'src/style.css', to: 'css' }
       ]
     })
